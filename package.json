@@ -1,0 +1,46 @@
+{
+  "name": "@dy-kit/openapi-codegen",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "根据 openapi 文档生成ts类型",
+  "author": "XiaDeYu <1579883916@qq.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Xdy1579883916/openapi-codegen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xdy1579883916/openapi-codegen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Xdy1579883916/openapi-codegen/issues"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && npm publish"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^5.2.1",
+    "@types/node": "^22.15.17",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.33.0",
+    "tsdown": "^0.11.9",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3"
+  }
+}
