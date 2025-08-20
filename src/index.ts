@@ -52,7 +52,7 @@ export async function openapi_codegen(opt: Opt): Promise<string> {
           const { name, required, schema, description } = param
           const is_required = required ? '' : '?'
           return {
-            type: `${name}${is_required}: ${get_schema_type(schema?.type)}`,
+            type: `"${name}"${is_required}: ${get_schema_type(schema?.type)}`,
             description,
           }
         })
@@ -70,8 +70,9 @@ export async function openapi_codegen(opt: Opt): Promise<string> {
     const { summary, api_path, methodName, type_params } = item
     const type_params_tmp = type_params
       .map((v) => {
+        const desc = `/* ${v.description || 'unset description'} */`
         return `
-    // ${v.description}
+    ${desc}
     ${v.type}`
       })
       .join('')
@@ -82,12 +83,10 @@ export async function openapi_codegen(opt: Opt): Promise<string> {
           : 'any'
 
     return `
-  // ${summary}
+  /* ${summary} */
   "${api_path}|${methodName}": ${type_params_str}`
   }).join('')
-  return `/* eslint-disable */
-export interface OpenApi {${ts_code}
-}`
+  return `/* eslint-disable */\nexport interface OpenApi {${ts_code}\n}`
 }
 
 // parameters 的 schema type 映射
