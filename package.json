@@ -1,7 +1,7 @@
 {
   "name": "@dy-kit/openapi-codegen",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "根据 openapi 文档生成ts类型",
   "author": "XiaDeYu <1579883916@qq.com>",
   "license": "MIT",
